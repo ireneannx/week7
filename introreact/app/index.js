@@ -4,10 +4,18 @@ import React from 'react' //same as const react = require('react')
 import ReactDOM from 'react-dom' //dom will render the app
 import List from './List' //imported List to component  
 import Number from './Number' //imported Number component
+import RandomName from './randFriends';
 
-//generally all functions will be in this page so you can reuse it 
+const friends2 = ["riz", "rit", "rus", "aja", "har", "cra", "mar"]
+
+//generally all functions,data,array will be in this page so you can reuse it 
 function getsNum(){
   return Math.floor((Math.random()*10)+1);
+}
+
+//to generate random names
+function getRand(){
+  return friends2[Math.floor((Math.random()*friends2.length))]
 }
 
 //created component App 
@@ -24,6 +32,9 @@ class App extends React.Component{
         {/* Number component renders here  */}
         <Number getNum = {getsNum}/> 
         {/* getNum from Number.js will be available as getsNum here */}
+
+        {/* RandomName generates random names from friends2 */}
+        <RandomName getRand = {getRand} name = {"destructuring"}/>
       </div>
     )
   }

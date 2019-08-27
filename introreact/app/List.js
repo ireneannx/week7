@@ -1,5 +1,7 @@
+//prints out list 
+
 import React from 'react'
-const friends = ["tom", "dick", "harry"]
+const friends = ["tom", "dick", "harry"] //generaly this data should be in index,js since it can be reused there but since this is a first example, we didnt do that 
 
 class List extends React.Component { //there are components in react which you are creating //abstarcting all teh components that React has 
   render() {

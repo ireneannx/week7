@@ -1,5 +1,7 @@
+//returns random numbers. if rand number is 5 then prints hello + random image, else 'sorry'.
 import React from 'react';
 
+//class based component. can assign a state 
 class Number extends React.Component{
   render(){
     console.log('Number component', this.props)
