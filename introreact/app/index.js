@@ -7,7 +7,7 @@ import Number from './Number' //imported Number component
 
 //generally all functions will be in this page so you can reuse it 
 function getsNum(){
-  return Math.floor((Math.random()*10)+1)
+  return Math.floor((Math.random()*10)+1);
 }
 
 //created component App 
@@ -23,7 +23,7 @@ class App extends React.Component{
 
         {/* Number component renders here  */}
         <Number getNum = {getsNum}/> 
-        {/* getsNum func will be available in Numbers.js as getNum */}
+        {/* getNum from Number.js will be available as getsNum here */}
       </div>
     )
   }
