@@ -6,7 +6,8 @@ const friends = ["tom", "dick", "harry"] //generaly this data should be in index
 class List extends React.Component { //there are components in react which you are creating //abstarcting all teh components that React has 
   render() {
     return (//everything in return is the jsx part
-      <div>
+      <div className="com"> 
+      {/* classname is the jsx alternative to class attribute in js */}
         <h1>List of basic people</h1>
 
         {/* to make js appear in jsx, use curly braces  */}

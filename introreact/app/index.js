@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom' //dom will render the app
 import List from './List' //imported List to component  
 import Number from './Number' //imported Number component
 import RandomName from './randFriends';
+// link to stylesheet. This is done without script tags because we defined in webpack.config.js under rules that any file ending with .css should use style loader and css loader which loads css into the app.
+import './index.css'
 
 const friends2 = ["riz", "rit", "rus", "aja", "har", "cra", "mar"]
 
