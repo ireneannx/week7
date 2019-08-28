@@ -4,6 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 //import from Counter.js
 import Counter from './Counter';
+//import from CC
+import CC from './CC';
 
 class App extends React.Component{
   //after release of private class fields (after v16.5)
@@ -38,6 +40,8 @@ class App extends React.Component{
         <Counter count={count}
         increment = {this.increment}
         decrement = {this.decrement}/> 
+
+        <CC />
       </div>
     )
 }
