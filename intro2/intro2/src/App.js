@@ -8,6 +8,8 @@ import Counter from './Counter';
 import CC from './CC';
 //import from List 
 import List from './List'
+//import from ControlledForm
+import User from './ControlledForm'
 
 class App extends React.Component{
   //after release of private class fields (after v16.5)
@@ -59,7 +61,13 @@ class App extends React.Component{
     this.setState({
       contacts : updateState
     })
-   
+  }
+
+  //add to list
+  addList = (listitem)=>{
+    this.setState({
+      contacts: [...this.state.contacts, listitem]
+    })
   }
 
   //render App
@@ -74,10 +82,17 @@ class App extends React.Component{
         <Counter count={count}
         increment = {this.increment}
         decrement = {this.decrement}/> 
+        <hr/>
 
         <CC />
+        <hr/>
 
         <List contacts={contacts} removeContacts={this.removeContacts}/>
+        <hr/>
+
+        <User addList={this.addList}/>
+        <hr/>
+
       </div>
     )
 }
