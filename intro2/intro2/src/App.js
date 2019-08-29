@@ -11,10 +11,10 @@ import List from './List'
 //import from ControlledForm
 import User from './ControlledForm'
 
-class App extends React.Component{
+class App extends React.Component {
   //after release of private class fields (after v16.5)
-  state ={ //state of App component . state is an object 
-    count : 0,
+  state = { //state of App component . state is an object 
+    count: 0,
     //adding some dummy contacts 
     contacts: [
       {
@@ -39,63 +39,89 @@ class App extends React.Component{
   }
 
   //using arrow functions automatically does the binding for you
-  increment = ()=>{
+  increment = () => {
     console.log("increment", this) //this is pointing to App 
     this.setState({
       count: this.state.count + 1
     })
   }
 
-  decrement = ()=>{
+  decrement = () => {
     console.log("decrement", this)
     this.setState({
-      count : this.state.count - 1
+      count: this.state.count - 1
     })
   }
 
   //remove contacts in List 
-  removeContacts = (contact)=>{
-    console.log('inside app.js',contact)
-    const updateState = this.state.contacts.filter((c)=> c.id !== contact.id)
-    console.log('only updated state',updateState)
+  removeContacts = (contact) => {
+    console.log('inside app.js', contact)
+    const updateState = this.state.contacts.filter((c) => c.id !== contact.id)
+    console.log('only updated state', updateState)
     this.setState({
-      contacts : updateState
+      contacts: updateState
     })
   }
 
   //add to list
-  addList = (listitem)=>{
+  addList = (listitem) => {
     this.setState({
       contacts: [...this.state.contacts, listitem]
     })
   }
 
+  //update List 
+  updateList = (id, updateditem) => {
+    const tempitem = {
+      name: updateditem.name,
+      handle: updateditem.handle,
+      id: id,
+      avatarURL: updateditem.avatarURL
+    }
+
+    console.log("form will be updated. id of item is: ", id)
+    //if id is matched, update the contact 
+    const updateArray = this.state.contacts.map(contact => {
+      if (contact.id === id) {
+        return tempitem
+      } else {
+        return contact
+      }
+    })
+
+    console.log(updateArray)
+    this.setState({
+      contacts: updateArray
+    })
+
+  }
+
   //render App
-  render(){
+  render() {
     //everything here is JS
-    const {count, contacts} = this.state; //destructuring
-    return(
+    const { count, contacts } = this.state; //destructuring
+    return (
       // everything here is JSX which is why you must put a div to render it 
       <div>
         {/* jsx */}
         {/* count from here (line 32) will be available as count in Counter.js. Same way, increment and decrement are also getting passed */}
         <Counter count={count}
-        increment = {this.increment}
-        decrement = {this.decrement}/> 
-        <hr/>
+          increment={this.increment}
+          decrement={this.decrement} />
+        <hr />
 
         <CC />
-        <hr/>
+        <hr />
 
-        <List contacts={contacts} removeContacts={this.removeContacts}/>
-        <hr/>
+        <List contacts={contacts} removeContacts={this.removeContacts} updateList={this.updateList} />
+        <hr />
 
-        <User addList={this.addList}/>
-        <hr/>
+        <User addList={this.addList} />
+        <hr />
 
       </div>
     )
-}
+  }
 }
 
 export default App;
