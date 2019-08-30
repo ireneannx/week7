@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './NavChange'
+// import Nav from './NavChange';
+import MainApp from './ReactApp';
 
 class App extends Component {
   state = {}
   render() {
     return (
       <div>
-        <Nav />
+        {/* <Nav /> */}
+        <MainApp />
       </div>
     );
   }
