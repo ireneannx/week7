@@ -61,7 +61,7 @@ const ProtectedRoute = ({ component: Component, isAuth, ...props }) => {
     render={(props) => isAuth === true ?
       <Component {...props} />
       :
-      <Redirect to={{ pathname: '/login' }} />
+      <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
     }
   />
 }
@@ -71,8 +71,8 @@ class App extends Component {
     loggedIn: false
   }
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+  isLoginHandler = () => {
+
     console.log(this.state);
     this.setState({
       loggedIn: true
@@ -101,27 +101,20 @@ class App extends Component {
 
         <hr />
 
-        {/* If we were to have multiple protected routes, say dashboard and user profile, we dont wanna individually check them. So we write higher order components like ProtectedRoute  */}
+        {/* Using path from history to redirect user back to where they came from after logging in */}
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={() => <Login handleFormSubmit={this.handleFormSubmit} />} />
+          <Route exact path='/login' render={(props) => <Login {...props} isLoginHandler={this.isLoginHandler} loggedIn={this.state.loggedIn} />} />
 
           {/* when you wanna enter protected route  */}
           <ProtectedRoute exact path='/dashboard' isAuth={this.state.loggedIn} component={Dashboard} isLogout={this.isLogout} />
 
-          {/* <ProtectedRoute path='/dashboard' isAuth={this.state.loggedIn} component={Dashboard} /> */}
-
-
         </Switch>
-
-
-
       </div>
     );
   }
 }
-
 
 export default App;
 
