@@ -12,7 +12,7 @@ const P3 = (props) => {
       <p>Bio: {props.bio}</p>
 
       <button type="submit" onClick={props.subtractPage}>Back</button>
-      <button type="submit" onClick={props.addPage}>Confirm AND(to fix) Continue</button>
+      <button type="submit" onClick={props.addPage}>Confirm &amp; Continue</button>
     </div>
   );
 }
